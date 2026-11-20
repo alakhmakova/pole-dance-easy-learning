@@ -1,8 +1,12 @@
 import Header from './components/Header'
+import CategoryList from './components/CategoryList'
 
 function App() {
   return (
-    <Header />
+    <>
+      <Header />
+      <main><CategoryList /></main>
+    </>
   )
 }
 
