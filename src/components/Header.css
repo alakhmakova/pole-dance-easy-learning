@@ -1,0 +1,61 @@
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 14px; 
+    align-items: center;
+}
+
+.header {
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
+
+.logo {
+    line-height: 1;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo img {
+    width: 48px; 
+    height: 70px;
+}
+
+.header p {
+    margin: 0;
+}
+
+.site-name {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.site-tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--accent);
+    margin-top: 3px;
+}
+
+.main-menu {
+    display: flex;
+    gap: 26px;
+}
+
+.main-menu a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+}
+
+.main-menu a:hover {
+    color: var(--accent)
+}
