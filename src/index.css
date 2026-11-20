@@ -1,0 +1,124 @@
+/* Global styles: colour tokens, fonts and base rules shared by every component.
+   Component-specific styles live in each component's own CSS file. */
+
+:root {
+  /* Page colours */
+  --bg: #FBF6EE;            /* cream page background */
+  --panel: #FFFFFF;         /* cards, table, forms */
+  --line: #E2D5C2;          /* borders and dividers */
+  --tint: #F5E7DC;          /* soft highlighted background */
+
+  /* Text colours */
+  --text: #2B1D14;          /* main text, dark brown */
+  --muted: #5A473A;         /* secondary text */
+
+  /* Accent: main buttons, links, locks */
+  --accent: #A4462A;        /* terracotta */
+  --accent-hover: #83361F;
+  --on-accent: #FFFFFF;     /* text on --accent */
+
+  /* Price buttons */
+  --price: #D5B86F;         /* muted gold */
+  --price-hover: #C8A757;
+  --on-price: #000000;      /* text on --price */
+
+  /* Status and decoration */
+  --ok: #4A6318;            /* mastered */
+  --sage: #5E7048;          /* leaves and small icons */
+
+  /* Footer band */
+  --band: #3B2619;
+  --band-text: #FBF6EE;
+  --band-muted: #E6D9C8;
+
+  /* Fonts (loaded from Google Fonts in index.html) */
+  --display: "Fraunces", Georgia, serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Visible keyboard focus for links, buttons and form fields */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Centres page content and keeps a 16px gap from the screen edges */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Main button: terracotta pill with uppercase text */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Price button variant: add together with .btn, e.g. class="btn btn-price" */
+.btn-price {
+  background: var(--price);
+  border-color: var(--price);
+  color: var(--on-price);
+}
+
+.btn-price:hover {
+  background: var(--price-hover);
+  border-color: var(--price-hover);
+}
