@@ -1,11 +1,16 @@
+import { Routes, Route } from "react-router";
 import Header from './components/Header'
-import CategoryList from './components/CategoryList'
+import CatalogPage from './pages/CatalogPage'
+import CategoryPage from './pages/CategoryPage'
 
 function App() {
   return (
     <>
       <Header />
-      <main className='container'><CategoryList /></main>
+      <Routes>
+        <Route index element={<CatalogPage />} />
+        <Route path="category/:id" element={<CategoryPage />} />
+      </Routes>
     </>
   )
 }
