@@ -2,7 +2,7 @@
 
 ## Project documentation
 
-- [Routing: why BrowserRouter](docs/routing.md)
+- [Routing: why BrowserRouter, and Link instead of a](docs/routing.md)
 
 ## Development notes
 

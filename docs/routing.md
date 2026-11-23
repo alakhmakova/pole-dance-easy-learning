@@ -55,6 +55,27 @@ Normal address: `site.com/category/flexibility`
   In development (`npm run dev`) Vite already does this by itself.
 - **Plus:** clean addresses, and the anchors `#about` and `#contact` work as usual.
 
+## Links between pages: Link instead of a
+
+For pages inside the site, use the **`Link`** component, not a plain `<a>`.
+
+```jsx
+import { Link } from "react-router";
+
+<Link to="/">Catalog</Link>                    // instead of <a href="/">Catalog</a>
+<Link to="/category/flexibility">Flexibility</Link>
+```
+
+- `Link` is **imported** from `"react-router"` (it is a named export, so the import uses `{ }`).
+- The address goes in **`to`** instead of `href`.
+- **Why:** a plain `<a>` makes the browser load the whole site again from the server
+  (page flashes, all state is lost, data is fetched again).
+  `Link` only changes the address and lets the router show the new page, without a reload.
+- In the browser `Link` still becomes a normal `<a>`, so it works with the keyboard,
+  right click "Open in new tab", and screen readers.
+- **Keep a plain `<a>`** for anchors on the same page (`#about`, `#contact`)
+  and for links to other websites.
+
 ## Decision
 
 This project uses **BrowserRouter** + a rewrite rule in `vercel.json`,
@@ -64,4 +85,5 @@ because the menu needs `#about` / `#contact` anchors and clean page addresses.
 
 - [React Router: Installation](https://reactrouter.com/start/declarative/installation)
 - [React Router: Routing](https://reactrouter.com/start/declarative/routing)
+- [React Router: Navigating (Link)](https://reactrouter.com/start/declarative/navigating)
 - [Vercel: Rewrites](https://vercel.com/docs/rewrites)

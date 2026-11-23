@@ -1,0 +1,123 @@
+.footer {
+    background-color: var(--panel);
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+}
+
+/* Three columns on desktop, two on tablets, one on phones */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.1fr;
+    gap: 40px;
+    padding-top: 48px;
+    padding-bottom: 32px;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* The form takes the whole second row */
+    .contact-form {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 560px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.footer-col h2 {
+    font-size: 22px;
+    margin-top: 6px;
+}
+
+.footer-col > p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 42ch;
+}
+
+/* Smaller logo than in the header */
+.footer .logo p {
+    margin: 0;
+}
+
+.footer .logo img {
+    width: 34px;
+    height: 50px;
+}
+
+.footer .site-name {
+    font-size: 19px;
+}
+
+.footer .site-tagline {
+    font-size: 14px;
+}
+
+.contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.contact-list li {
+    display: grid;
+    gap: 2px;
+}
+
+.contact-list b {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.contact-form label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--text);
+    background-color: var(--bg);
+    border: 1px solid var(--muted);
+    border-radius: 10px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+.footer-bottom {
+    margin: 0 auto;
+    padding-top: 18px;
+    padding-bottom: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
