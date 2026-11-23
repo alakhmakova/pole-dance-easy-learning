@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Header />
-      <main><CategoryList /></main>
+      <main className='container'><CategoryList /></main>
     </>
   )
 }

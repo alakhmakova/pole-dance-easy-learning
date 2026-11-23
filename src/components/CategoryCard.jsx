@@ -5,9 +5,9 @@ export default function CategoryCard({url, categoryName, categoryTotal, category
 return(
     <div className="category-card">
         <img src={url} alt={categoryName} />
-        <div>
+        <div className='category-info'>
             <h2>{categoryName}</h2>
-            <div>
+            <div className='category-meta'>
                 <p>{categoryTotal} elements</p>
                 <p>{categoryMastered}/{categoryBought} mastered</p>
             </div>

@@ -81,11 +81,16 @@ button {
   outline-offset: 3px;
 }
 
+/* Space between the header and the page content */
+main {
+  padding-block: 40px;
+}
+
 /* Centres page content and keeps a 16px gap from the screen edges */
 .container {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: 16px;
 }
 
 /* Main button: terracotta pill with uppercase text */

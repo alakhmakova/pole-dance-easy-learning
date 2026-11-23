@@ -14,5 +14,5 @@ export default function CategoryList() {
             categoryBought={category.bought}
         />
     );
-    return <div>{listCategories}</div>
+    return <div className='category-list'>{listCategories}</div>
 }
