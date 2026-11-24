@@ -35,3 +35,21 @@ export function getCategories() {
         });
 }
 */
+
+// Returns the category with this id, or undefined if there is none.
+// "Not found" is not an error here: CategoryPage checks for undefined and shows the message.
+export async function getCategory(id) {
+    const categories = await getCategories();
+    return categories.find(category => category.id === id);
+}
+
+// Returns the elements of one category; an empty array if the category has none.
+// An empty list is not an error here: CategoryPage checks the length and shows the message.
+export async function getElements(categoryId) {
+    const response = await fetch("/data/elements.json");
+    if (!response.ok) {
+        throw new Error('Could not load elements');
+    }
+    const elements = await response.json();
+    return elements.filter(element => element.categoryId === categoryId);
+}

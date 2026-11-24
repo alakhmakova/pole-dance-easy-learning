@@ -13,7 +13,7 @@ export default function CategoryList() {
         getCategories()
             .then(data => setCategories(data))
             .catch(err => {
-                // Technical details for the developer (F12 -> Console)
+                // Technical details for the developer (F12 -> Console), do not show them to the user on the screen
                 console.error(err);
                 setError(true);
             })
@@ -27,6 +27,7 @@ export default function CategoryList() {
     const listCategories = categories.map(category =>
         <CategoryCard
             key={category.id}
+            categoryId={category.id}
             url={category.url}
             categoryName={category.name}
             categoryTotal={category.total}

@@ -1,9 +1,10 @@
+import { Link } from "react-router";
 import './CategoryCard.css'
 // Shows one category: picture, name, number of elements and mastered progress.
 
-export default function CategoryCard({url, categoryName, categoryTotal, categoryMastered, categoryBought}){
+export default function CategoryCard({categoryId, url, categoryName, categoryTotal, categoryMastered, categoryBought}){
 return(
-    <div className="category-card">
+    <Link to={`/category/${categoryId}`} className="category-card">
         <img src={url} alt={categoryName} />
         <div className='category-info'>
             <h2>{categoryName}</h2>
@@ -12,6 +13,6 @@ return(
                 <p>{categoryMastered}/{categoryBought} mastered</p>
             </div>
         </div>
-    </div>
+    </Link>
 );
 }

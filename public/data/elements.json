@@ -1,0 +1,802 @@
+[
+  {
+    "id": "F1",
+    "categoryId": "flexibility",
+    "name": "Inside Leg Hang 1",
+    "techValue": 0.1,
+    "price": 4,
+    "image": "/images/flexibility.jpg",
+    "description": "An inverted hang on your inside leg with no hands on the pole. A first step into trusting your leg grip.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Inside leg and side of torso. Optional: foot of inside leg, back of inside arm, shoulder blade"
+      },
+      {
+        "label": "Arms",
+        "text": "Fixed position of your choice, no hands on the pole"
+      },
+      {
+        "label": "Legs",
+        "text": "Stag position"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted"
+      },
+      {
+        "label": "Split",
+        "text": "At least 160°, with 20° tolerance"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F4",
+    "categoryId": "flexibility",
+    "name": "Front Split 1",
+    "techValue": 0.2,
+    "price": 4,
+    "image": "/images/elements/f4.jpg",
+    "description": "An upright front split on the pole, holding on with the grip of your choice.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Legs and hands. Optional: forearms, feet"
+      },
+      {
+        "label": "Arms",
+        "text": "Grip of your choice"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs extended in a front split"
+      },
+      {
+        "label": "Body",
+        "text": "Upright"
+      },
+      {
+        "label": "Split",
+        "text": "At least 160°"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F8",
+    "categoryId": "flexibility",
+    "name": "Allegra Split 1",
+    "techValue": 0.3,
+    "price": 4,
+    "image": "/images/elements/f8.jpg",
+    "description": "A frontal split with your back to the pole. Your inside hand grips the pole above your inside leg, your back arches away from the pole, and your outside arm reaches out while both legs open wide.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Inside hand grips the pole above the inside leg; outside arm extended in a fixed position of your choice"
+      },
+      {
+        "label": "Contact",
+        "text": "Hand of the inside arm, thigh of the inside leg, side of torso or lower back"
+      },
+      {
+        "label": "Legs",
+        "text": "Frontal split, both legs fully extended"
+      },
+      {
+        "label": "Body",
+        "text": "Back arched, facing away from the pole"
+      },
+      {
+        "label": "Angle",
+        "text": "Split of at least 160°"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F15",
+    "categoryId": "flexibility",
+    "name": "Bridge",
+    "techValue": 0.4,
+    "price": 4,
+    "image": "/images/elements/f15.jpg",
+    "description": "An inverted backbend held in your hands. Grip the pole with straight arms, arch your back and lift your hips and closed legs until they are parallel to the floor.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Grip of your choice, arms fully extended"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands, inner thighs"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs extended and closed"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted, back arched, hips and both legs parallel to the floor"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F36",
+    "categoryId": "flexibility",
+    "name": "Lux",
+    "techValue": 0.5,
+    "price": 4,
+    "image": "/images/elements/f36.jpg",
+    "description": "A back-arched hold in split grip. Both arms stay straight, one leg and your hips touch the pole, and your upper body arches back with your head level with or above your hips.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Split grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands, one leg and hips"
+      },
+      {
+        "label": "Legs",
+        "text": "Position of your choice, on the same side of the pole as your body"
+      },
+      {
+        "label": "Body",
+        "text": "Upper body in a back arch, head at the same level as the hips or higher"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F46",
+    "categoryId": "flexibility",
+    "name": "Handstand Hip Hold Split",
+    "techValue": 0.6,
+    "price": 4,
+    "image": "/images/elements/f46.jpg",
+    "description": "A one-handed back bend at the foot of the pole. Your outside hand is on the floor, your inside hand holds your inside leg at the shin, and your legs open into a full split with the inside foot on the floor.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Side of torso, outside ankle, back of inside shoulder"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended. Inside hand holds the inside leg at the shin, between knee and ankle; outside hand on the floor"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended in a split; inside foot touches the floor"
+      },
+      {
+        "label": "Body",
+        "text": "One-handed back bend"
+      },
+      {
+        "label": "Split",
+        "text": "At least 180°"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F98",
+    "categoryId": "flexibility",
+    "name": "Upright Twisted Capezio",
+    "techValue": 0.8,
+    "price": 4,
+    "image": "/images/elements/f98.jpg",
+    "description": "An upright oversplit. Your inside arm wraps around the pole and holds the foot of your back leg, which stretches over your head in a ring position. Your front leg stays fully extended against the pole, and your outside arm holds it.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Front thigh, side of torso, back of shoulder, top arm"
+      },
+      {
+        "label": "Arms",
+        "text": "Inside arm around the pole, holding the foot or ankle of the back leg. Outside arm holds the front leg"
+      },
+      {
+        "label": "Legs",
+        "text": "Oversplit. Front leg fully extended and touching the pole; back leg and foot stretched over the head in a ring position"
+      },
+      {
+        "label": "Body",
+        "text": "Upright"
+      },
+      {
+        "label": "Split",
+        "text": "At least 190°"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "F125",
+    "categoryId": "flexibility",
+    "name": "Floor Based Marchenko",
+    "techValue": 1,
+    "price": 4,
+    "image": "/images/elements/f125.jpg",
+    "description": "An inverted handstand split that starts from the floor. Your inside arm presses into the floor in an underarm grip, your outside arm holds your inside leg, and your legs open into a full split with your chest facing down.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Underarm grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended; inside arm on the floor in underarm grip, outside arm holding the inside leg at the ankle or calf"
+      },
+      {
+        "label": "Contact",
+        "text": "Underarm of the inside arm, side of torso, back of one thigh"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended in a split of at least 180°"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted handstand, chest facing down"
+      },
+      {
+        "label": "Start",
+        "text": "From the floor"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S3",
+    "categoryId": "strength",
+    "name": "Elbow Grip Seat",
+    "techValue": 0.1,
+    "price": 4,
+    "image": "/images/elements/s3.jpg",
+    "description": "A seated hold that starts your strength journey. Hold the pole in the crook of your inside elbow, hook your inside knee, sit on the backs of your thighs and stretch the outside leg out on the same side.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Inside arm in elbow grip; outside arm in a fixed position of your choice"
+      },
+      {
+        "label": "Contact",
+        "text": "Crook of the elbow of the inside arm, back of the knee of the inside leg, backs of the thighs, glutes"
+      },
+      {
+        "label": "Legs",
+        "text": "Inside leg hooked, outside leg fully extended, both legs on the same side of the pole"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S11",
+    "categoryId": "strength",
+    "name": "Cupid",
+    "techValue": 0.2,
+    "price": 4,
+    "image": "/images/elements/s11.jpg",
+    "description": "A hands-free hold with your body on a diagonal. Hook the pole behind your inside knee, press the sole of your outside foot against it, and open both arms away from the pole.",
+    "criteria": [
+      {
+        "label": "Arms",
+        "text": "Both arms in a fixed position of your choice, no contact with the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "Inside knee of the inside leg, foot of the outside leg"
+      },
+      {
+        "label": "Legs",
+        "text": "Inside leg hooked to the pole at the knee; outside leg fully extended with the sole of the foot on the pole"
+      },
+      {
+        "label": "Body",
+        "text": "Upright, diagonal to the pole"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S21",
+    "categoryId": "strength",
+    "name": "Basic Superman",
+    "techValue": 0.3,
+    "price": 4,
+    "image": "/images/elements/s21.jpg",
+    "description": "Fly flat beside the pole. Squeeze the pole between your inner thighs, hold it with one hand, and stretch your body, arms and closed legs out parallel to the floor.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Both arms fully extended, only one hand holds the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "Both inner thighs, one hand"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended and closed"
+      },
+      {
+        "label": "Body",
+        "text": "Hips and legs parallel to the floor"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S41",
+    "categoryId": "strength",
+    "name": "Russian Layback 1",
+    "techValue": 0.4,
+    "price": 4,
+    "image": "/images/elements/s41.jpg",
+    "description": "An inverted layback held by your legs and both hands. Hook the pole in the crook of one knee, cross the other leg over it, face away from the pole and reach both straight arms down to hold it.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Basic grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms extended, holding the pole above your head (relative to you, upside down)"
+      },
+      {
+        "label": "Contact",
+        "text": "Hands, crook of the knee and back of the thigh, glutes. Optional: ankle or calf"
+      },
+      {
+        "label": "Legs",
+        "text": "One leg grips the pole in the crook of the knee and along the back of the thigh, the other leg crosses over it"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted, facing away from the pole"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S44",
+    "categoryId": "strength",
+    "name": "Butterfly Reverse Extension",
+    "techValue": 0.5,
+    "price": 4,
+    "image": "/images/elements/s44.jpg",
+    "description": "An inverted split held by straight arms. Your top hand cups the pole, the heel of the opposite leg presses against it to twist your hips, and both legs open wide.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Top hand in cup grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands and one heel"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended in a split"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted; the heel of the leg opposite the top hand is on the pole, twisting the hips"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S55",
+    "categoryId": "strength",
+    "name": "Iron X 1",
+    "techValue": 0.6,
+    "price": 4,
+    "image": "/images/elements/s55.jpg",
+    "description": "A pure strength hold on two straight arms. Your upper body sticks out sideways from the pole, close to a right angle, while your legs open in an even straddle.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Grip of your choice, except cup grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended in an even straddle, hips bent forwards"
+      },
+      {
+        "label": "Body",
+        "text": "Upper body at 90° to the pole (20° tolerance), facing the same direction"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S93",
+    "categoryId": "strength",
+    "name": "Shoulder Mount Plank 1",
+    "techValue": 0.9,
+    "price": 4,
+    "image": "/images/elements/s93.jpg",
+    "description": "A plank held from a shoulder mount. Starting from an aerial shoulder mount pencil (S29), you lower your whole body until it is straight and parallel to the floor.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Cup grip or basic grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Both arms bent"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands and one shoulder (neck optional)"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended and closed, parallel to the floor"
+      },
+      {
+        "label": "Body",
+        "text": "Back and legs at 90° to the pole"
+      },
+      {
+        "label": "Start",
+        "text": "From an aerial shoulder mount pencil position (S29), lower into the plank"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds"
+      }
+    ]
+  },
+  {
+    "id": "S104",
+    "categoryId": "strength",
+    "name": "Iguana Horizontal",
+    "techValue": 1,
+    "price": 4,
+    "image": "/images/elements/s104.jpg",
+    "description": "A horizontal hold in the iguana position. Your top arm reaches behind your back to hold the pole, and your whole body stays straight and parallel to the floor.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Basic grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Bottom arm may be bent; top arm fully extended, holding the pole behind your back in the iguana position"
+      },
+      {
+        "label": "Contact",
+        "text": "Both hands and one shoulder (neck optional)"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended and closed, parallel to the floor"
+      },
+      {
+        "label": "Body",
+        "text": "Entire body at 90° to the pole"
+      },
+      {
+        "label": "Start",
+        "text": "From an aerial position, deadlift or lower into a 90° horizontal angle to the pole, parallel to the floor"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 2 seconds in the final position"
+      }
+    ]
+  },
+  {
+    "id": "SP1",
+    "categoryId": "spinning-spins",
+    "name": "Back Hook Twist Spin",
+    "techValue": 0.1,
+    "price": 4,
+    "image": "/images/spinning.jpg",
+    "description": "A spin hooked by the crook of one knee. Your outside arm stays straight and holds the pole behind your body.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Crook of one knee, opposite hand"
+      },
+      {
+        "label": "Arms",
+        "text": "Outside arm extended, holding the pole behind the body"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 720° of rotation"
+      }
+    ]
+  },
+  {
+    "id": "SP8",
+    "categoryId": "spinning-spins",
+    "name": "Twisted Spin",
+    "techValue": 0.2,
+    "price": 4,
+    "image": "/images/elements/sp8.jpg",
+    "description": "An upright spin with no hands on the pole. One leg stretches along the pole, the other bends around it, and your body and the spinning pole carry you round at least two full turns.",
+    "criteria": [
+      {
+        "label": "Contact",
+        "text": "Full length of one leg; calf, thigh and crook of the knee of the other leg; hips, side of torso, back. Optional: neck"
+      },
+      {
+        "label": "Arms",
+        "text": "Fixed position of your choice, no hand contact with the pole"
+      },
+      {
+        "label": "Legs",
+        "text": "One leg fully extended alongside the pole, the other bent around the pole"
+      },
+      {
+        "label": "Body",
+        "text": "Upright; your head is on the same side of the pole as the foot of the bent leg"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 720° of rotation"
+      }
+    ]
+  },
+  {
+    "id": "SP9",
+    "categoryId": "spinning-spins",
+    "name": "Underarm Hold Spin",
+    "techValue": 0.2,
+    "price": 4,
+    "image": "/images/elements/sp9.jpg",
+    "description": "An upright spin held by your underarm instead of your hands. Hook the pole in the crook of your inside arm, stretch one leg along the pole, bend the other knee, and let the pole turn you round at least twice.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Underarm grip"
+      },
+      {
+        "label": "Contact",
+        "text": "Inside underarm, inner upper thigh, inside knee, outside foot. Optional: shin or calf of the outside leg"
+      },
+      {
+        "label": "Arms",
+        "text": "Fixed position of your choice, no hand contact with the pole. Only the inside arm touches the pole"
+      },
+      {
+        "label": "Legs",
+        "text": "One leg fully extended along the pole, the other knee bent"
+      },
+      {
+        "label": "Body",
+        "text": "Upright"
+      },
+      {
+        "label": "Hold",
+        "text": "At least 720° of rotation"
+      }
+    ]
+  },
+  {
+    "id": "SP11",
+    "categoryId": "spinning-spins",
+    "name": "Carousel Spin Elbow Grip",
+    "techValue": 0.3,
+    "price": 4,
+    "image": "/images/elements/sp11.jpg",
+    "description": "An upright spin hanging from your elbow. Your upper elbow hooks the pole, your bottom arm stays straight against it, and your legs form a diamond as you turn.",
+    "criteria": [
+      {
+        "label": "Grip",
+        "text": "Elbow grip"
+      },
+      {
+        "label": "Arms",
+        "text": "Upper elbow holds the pole; bottom arm fully extended and touching the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "One elbow and one hand"
+      },
+      {
+        "label": "Legs",
+        "text": "Diamond"
+      },
+      {
+        "label": "Body",
+        "text": "Upright"
+      },
+      {
+        "label": "Rotation",
+        "text": "At least 720°"
+      }
+    ]
+  },
+  {
+    "id": "SP35",
+    "categoryId": "spinning-spins",
+    "name": "Meathook Pike Spin",
+    "techValue": 0.5,
+    "price": 4,
+    "image": "/images/elements/sp35.jpg",
+    "description": "An inverted spin wrapped around the pole. Your inside arm holds on fully extended while your closed, straight legs fold into a pike and your free arm reaches out.",
+    "criteria": [
+      {
+        "label": "Arms",
+        "text": "Inside arm fully extended and holding the pole; outside arm in a fixed position of your choice, not touching the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "One hand and arm, thighs, hips, torso. Optional: shoulder"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended and closed in a pike"
+      },
+      {
+        "label": "Body",
+        "text": "Wrapped around the pole"
+      },
+      {
+        "label": "Rotation",
+        "text": "At least 720°"
+      }
+    ]
+  },
+  {
+    "id": "SP48",
+    "categoryId": "spinning-spins",
+    "name": "Gargoyle Spin No Hands",
+    "techValue": 0.6,
+    "price": 4,
+    "image": "/images/elements/sp48.jpg",
+    "description": "A hands-free spin held only by your bent legs. You face the floor with your upper body horizontal, and both arms stretch out without touching the pole or your body.",
+    "criteria": [
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended, not touching the pole or your body"
+      },
+      {
+        "label": "Contact",
+        "text": "Calves, crook of the knees, back of the thighs"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs bent"
+      },
+      {
+        "label": "Body",
+        "text": "Facing down, upper body horizontal"
+      },
+      {
+        "label": "Rotation",
+        "text": "At least 720°"
+      }
+    ]
+  },
+  {
+    "id": "SP70",
+    "categoryId": "spinning-spins",
+    "name": "Titanic Support",
+    "techValue": 0.8,
+    "price": 4,
+    "image": "/images/elements/sp70.jpg",
+    "description": "An upright spin with no hands. You hold the pole with your legs and glutes, arch your upper body back and stretch both arms behind you as you turn.",
+    "criteria": [
+      {
+        "label": "Arms",
+        "text": "Both arms fully extended back, not touching the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "One leg, thigh of the other leg, glutes. Optional: one shoulder or side of the neck, foot"
+      },
+      {
+        "label": "Legs",
+        "text": "Both legs fully extended"
+      },
+      {
+        "label": "Body",
+        "text": "Upright, upper body in a back arch"
+      },
+      {
+        "label": "Rotation",
+        "text": "At least 720°"
+      }
+    ]
+  },
+  {
+    "id": "SP80",
+    "categoryId": "spinning-spins",
+    "name": "Supported Sailor",
+    "techValue": 0.9,
+    "price": 4,
+    "image": "/images/elements/sp80.jpg",
+    "description": "An inverted, fully extended spin. Your closed, straight legs lock onto the pole at the ankles and shin, your inside arm presses against the pole and your outside arm reaches out.",
+    "criteria": [
+      {
+        "label": "Arms",
+        "text": "Inside arm fully extended and touching the pole; outside arm in a fixed position of your choice, not touching the pole"
+      },
+      {
+        "label": "Contact",
+        "text": "Both ankles, one shin and one calf, one hand. Optional: one foot"
+      },
+      {
+        "label": "Legs",
+        "text": "Fully extended and closed"
+      },
+      {
+        "label": "Body",
+        "text": "Inverted and extended"
+      },
+      {
+        "label": "Rotation",
+        "text": "At least 720°"
+      }
+    ]
+  }
+]
