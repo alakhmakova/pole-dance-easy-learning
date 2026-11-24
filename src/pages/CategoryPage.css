@@ -1,0 +1,69 @@
+/* Category page: breadcrumbs, title and the table of elements (styles from the mockup). */
+
+.crumbs {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.crumbs a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.crumbs a:hover {
+    color: var(--accent);
+}
+
+.category-title {
+    margin: 10px 0 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(40px, 6vw, 64px);
+}
+
+/* The box scrolls sideways on narrow screens instead of squeezing the table. */
+.table-box {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel);
+}
+
+.table-box table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+}
+
+.table-box th {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+/* First column (picture) and last column (Mastered) have fixed widths. */
+.table-box th:first-child {
+    width: 110px;
+}
+
+.table-box th:last-child {
+    width: 150px;
+    text-align: center;
+}
+
+.table-box td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+}
+
+.table-box tr:last-child td {
+    border-bottom: 0;
+}

@@ -1,8 +1,10 @@
 // Hooks (useState, useEffect, useParams: functions whose names start with "use")
 // can only be called at the top level of a component, never inside conditions, loops or nested functions.
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { getCategory, getElements } from '../api';
+import ElementRow from '../components/ElementRow';
+import './CategoryPage.css';
 
 export default function CategoryPage() {
     // id comes from the page address: the route in App.jsx is category/:id,
@@ -50,10 +52,36 @@ export default function CategoryPage() {
     // Short message for the user, without technical details
     if (error) return <main className='container'><p className='status-message'>Category could not be loaded.</p></main>;
     if (!category) return <main className='container'><p className='status-message'>Category not found.</p></main>;
-    if (elements.length === 0) return <main className='container'><p className='status-message'>Elements for this category are coming soon.</p></main>;
-    /*const listElements = elements.map(element =>
+    const listElements = elements.map(element =>
+        <ElementRow
+            key={element.id}
+            element={element}
+        />
+    );
 
-    );*/
-
-    return <main className='container'><h1>{category.name}</h1></main>
+    return (
+        <main className='container'>
+            <div className='crumbs'>
+                <Link to='/'>Catalog</Link> / <span>{category.name}</span>
+            </div>
+            <h1 className='category-title'>{category.name}</h1>
+            {elements.length === 0 ? (
+                <p className='status-message'>Elements for this category are coming soon.</p>
+            ) : (
+                <div className='table-box'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th></th>
+                                <th>Difficulty</th>
+                                <th>Mastered</th>
+                            </tr>
+                        </thead>
+                        <tbody>{listElements}</tbody>
+                    </table>
+                </div>
+            )}
+        </main>
+    );
 }
