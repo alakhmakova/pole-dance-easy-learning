@@ -1,6 +1,6 @@
 // Hooks (useState, useEffect, useParams: functions whose names start with "use")
 // can only be called at the top level of a component, never inside conditions, loops or nested functions.
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router";
 import { getCategory, getElements } from '../api';
 import ElementRow from '../components/ElementRow';
@@ -8,6 +8,7 @@ import './CategoryPage.css';
 import { buyElement, getMasteredIds, getOwnedIds, toggleMastered } from '../storage';
 
 export default function CategoryPage() {
+    // useParams reads the parameters from the address of the current page.
     // id comes from the page address: the route in App.jsx is category/:id,
     // so for /category/flexibility id is "flexibility".
     const { id } = useParams();

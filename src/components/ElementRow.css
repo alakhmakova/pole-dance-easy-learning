@@ -25,6 +25,16 @@
     font-weight: 600;
 }
 
+/* The name of a bought element is a link to its page: no underline, accent colour on hover. */
+a.el-name {
+    display: block;
+    text-decoration: none;
+}
+
+a.el-name:hover {
+    color: var(--accent);
+}
+
 .tv {
     margin-top: 2px;
     color: var(--muted);
@@ -82,6 +92,44 @@
     background: var(--ok);
 }
 
+/* Hover: the circle grows a little, gets a light golden fill and a soft golden halo,
+   and an empty circle shows a pale tick as a hint of what a click does.
+   transition makes these changes smooth instead of instant. */
+.check input {
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.check input:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--price) 50%, transparent);
+}
+
+.check input:not(:checked):hover {
+    background: color-mix(in srgb, var(--price) 25%, var(--panel));
+}
+
+.check input:not(:checked):hover::after {
+    content: "\2713";
+    color: var(--ok);
+    opacity: 0.45;
+}
+
+/* A mastered (filled) circle gets a slightly darker olive on hover. */
+.check input:checked:hover {
+    background: color-mix(in srgb, var(--ok) 85%, black);
+}
+
+/* Users who turned off animations in their system settings get the same look without the movement. */
+@media (prefers-reduced-motion: reduce) {
+    .check input {
+        transition: none;
+    }
+
+    .check input:hover {
+        transform: none;
+    }
+}
+
 /* The tick is text added by CSS; it is white because color is var(--panel). */
 .check input:checked::after {
     content: "\2713";
@@ -91,4 +139,27 @@
 .check input:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
+}
+
+/* Stretched link: the row is the frame for the invisible layer of the name link. */
+.table-box tr {
+    position: relative;
+}
+
+/* Invisible layer of the name link over the whole row: a click anywhere in the row opens the element page. */
+a.el-name::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+/* The Buy button and the checkbox lie above that layer, so they keep working. */
+.status .btn, .check {
+    position: relative;
+    z-index: 1;
+}
+
+/* A bought row is highlighted under the mouse. */
+.table-box tr:has(a.el-name:hover) {
+    background: var(--tint);
 }

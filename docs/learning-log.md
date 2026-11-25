@@ -147,3 +147,22 @@ cards on phones with CSS Grid (`display: grid` on `tr`, `grid-column`,
 - MDN: [Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries), [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap), [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink), [white-space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space), [Basic concepts of grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout), [grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column), [grid-row](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row)
 - MDN: [aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded)
 - [Device Mode](https://developer.chrome.com/docs/devtools/device-mode) (Chrome DevTools: how to check the site at phone width)
+
+## 14. Add route and empty element page
+
+**Topics:** a new route with a parameter (`element/:id`), a new page component.
+
+- [Routing](https://reactrouter.com/start/declarative/routing) (React Router: dynamic segments)
+
+## 15. Link bought elements to their page
+
+**Topics:** `useParams` reads the current address, so a link takes its id from
+the data in props (`element.id`); why `Link` cannot wrap a `tr`; the
+"stretched link" pattern (`position: relative` on the row, `::after` with
+`position: absolute; inset: 0`, `z-index` for the button and the checkbox);
+`:has()`; smooth hover effects with `transition`, `transform: scale()` and
+`color-mix()`; `prefers-reduced-motion`.
+
+- React Router: [Link](https://reactrouter.com/api/components/Link), [useParams](https://reactrouter.com/api/hooks/useParams), [useNavigate](https://reactrouter.com/api/hooks/useNavigate) (why Link is better for normal links)
+- MDN: [::after](https://developer.mozilla.org/en-US/docs/Web/CSS/::after), [inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset), [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index), [:has()](https://developer.mozilla.org/en-US/docs/Web/CSS/:has), [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition), [box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix), [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- More in the README section "Opening an element page from the elements table"

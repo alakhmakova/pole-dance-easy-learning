@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import './ElementRow.css';
 
 // Turns technical value (0.1-1.0) into a difficulty level for the table.
@@ -20,7 +21,9 @@ export default function ElementRow({ element, owned, mastered, onBuy, onToggleMa
         <tr>
             <td><div className="thumb"><img src={element.image} alt="" /></div></td>
             <td>
-                <div className="el-name">{element.name}</div>
+                {
+                    owned ? (<Link to={`/element/${element.id}`} className="el-name">{element.name}</Link>) : (<div className="el-name">{element.name}</div>)
+                }
                 <div className="tv">Tech value {element.techValue.toFixed(1)}</div>
             </td>
             <td><span className="level">{getLevel(element.techValue)}</span></td>

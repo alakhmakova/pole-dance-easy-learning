@@ -55,6 +55,53 @@ names. To find an id now, look it up in `public/data/elements.json`, or take
 the last id in `pole.owned` for the latest purchase. An admin panel for the
 site owner, where ids are useful, is a possible next step.
 
+## Opening an element page from the elements table
+
+A bought element opens its own page (`/element/F1`) with a click anywhere in
+its table row, except on the Mastered checkbox. Elements that are not bought
+yet have no link: their rows are not clickable, and Buy works as before.
+
+### Problems on the way and how they were solved
+
+1. **The link opened the category id instead of the element id.**
+   `ElementRow` used `useParams()`. `useParams` reads the parameters from the
+   address of the *current page*. On `/category/flexibility` it returns the
+   category id `flexibility`, and it knows nothing about a single row.
+   **Solution:** take the id from the data the component already has in its
+   props: `element.id`.
+2. **The table layout broke.** `Link` was placed around the whole `tr`.
+   `Link` becomes an `a` tag, and HTML allows only `tr` inside `tbody`, so the
+   browser rebuilt the table and the rows fell apart. Wrapping every cell in
+   its own link would give many links per row for keyboard and screen reader
+   users. **Solution:** one link on the element name, inside its cell. For an
+   element that is not bought, the name stays plain text (ternary on `owned`).
+3. **Only the name was clickable,** but users also click the picture or empty
+   space. **Solution:** a "stretched link" in `ElementRow.css`:
+   - `tr` gets `position: relative`, so it becomes the frame for the link;
+   - `a.el-name::after` is an empty, invisible layer with
+     `position: absolute; inset: 0`, stretched over the whole row. It is part
+     of the link, so a click on it opens the page;
+   - the Buy button and the checkbox get `position: relative; z-index: 1`, so
+     they lie above that layer and keep working without opening the page;
+   - `tr:has(a.el-name:hover)` highlights a bought row under the mouse.
+
+   No JavaScript is needed, the row is one link for the keyboard, and
+   "Open in new tab" works.
+
+### Two ways to get an id
+
+| Where | How | Why |
+| --- | --- | --- |
+| Pages (`CategoryPage`, `ElementPage`) | `const { id } = useParams()` | The page must know *which* category or element to load, and that is written in the address (`category/:id`, `element/:id` in `App.jsx`). |
+| Links (`ElementRow`, `CategoryCard`) | from the data in props: `` `/element/${element.id}` `` | The component already has the object it shows. It builds the address of the *next* page from it, not from the current address. |
+
+Docs: [useParams](https://reactrouter.com/api/hooks/useParams),
+[Link](https://reactrouter.com/api/components/Link),
+[::after](https://developer.mozilla.org/en-US/docs/Web/CSS/::after),
+[inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset),
+[z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index),
+[:has()](https://developer.mozilla.org/en-US/docs/Web/CSS/:has).
+
 ## Development notes
 
 - **StrictMode** (in `src/main.jsx`) is a React helper for development only. It shows nothing on the page. It runs components and effects twice on purpose, so bugs show up early. That is why in `npm run dev` the browser console can show the same log or error twice and `categories.json` is requested twice. The built site (Vercel) is not affected. [React docs: StrictMode](https://react.dev/reference/react/StrictMode)
