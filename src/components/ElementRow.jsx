@@ -13,8 +13,9 @@ function getLevel(techValue) {
     }
 }
 
-// Shows one element as a table row: picture, name and tech value, difficulty level, Buy button.
-export default function ElementRow({ element }) {
+// Shows one element as a table row: picture, name and tech value, difficulty level,
+// and a Buy button (not bought yet) or a Mastered checkbox (bought).
+export default function ElementRow({ element, owned, mastered, onBuy, onToggleMastered }) {
     return (
         <tr>
             <td><div className="thumb"><img src={element.image} alt="" /></div></td>
@@ -25,9 +26,20 @@ export default function ElementRow({ element }) {
             <td><span className="level">{getLevel(element.techValue)}</span></td>
             <td>
                 <div className="status">
-                    <button type="button" className="btn btn-price">Buy · €{element.price}</button>
+                    {owned ? (
+                        <label className="check">
+                            <input
+                                type="checkbox"
+                                checked={mastered}
+                                aria-label={`Mastered: ${element.name}`}
+                                onChange={() => onToggleMastered(element.id)}
+                            />
+                        </label>
+                    ) : (
+                        <button type="button" className="btn btn-price" onClick={() => onBuy(element.id)}>Buy · €{element.price}</button>
+                    )}
                 </div>
             </td>
         </tr>
     );
-} 
+}

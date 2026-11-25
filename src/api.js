@@ -14,6 +14,15 @@ export async function getCategories() {
     return response.json();
 }
 
+export async function getAllElements() {
+    const response = await fetch("/data/elements.json");
+    // fetch does NOT treat 404 "file not found" as an error
+    if (!response.ok) {
+        throw new Error('Could not load elements');
+    }
+    return response.json();
+}
+
 // VERSION 2 (example only, not used): .then chain, no async/await
 // - No "await" inside, so no "async" is needed: fetch(...).then(...) is already a Promise.
 // - Two returns, because there are two functions:
@@ -53,3 +62,5 @@ export async function getElements(categoryId) {
     const elements = await response.json();
     return elements.filter(element => element.categoryId === categoryId);
 }
+
+

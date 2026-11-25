@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router";
 import { getCategory, getElements } from '../api';
 import ElementRow from '../components/ElementRow';
 import './CategoryPage.css';
+import { buyElement, getMasteredIds, getOwnedIds, toggleMastered } from '../storage';
 
 export default function CategoryPage() {
     // id comes from the page address: the route in App.jsx is category/:id,
@@ -16,6 +17,10 @@ export default function CategoryPage() {
     // React keeps the value between renders; calling the setter makes React render the component again.
     const [elements, setElements] = useState([]);
     const [category, setCategory] = useState(null);
+    // Ids of bought and mastered elements, read from localStorage.
+    // The function is passed without (), so React calls it only on the first render, not on every render.
+    const [owned, setOwned] = useState(getOwnedIds);
+    const [mastered, setMastered] = useState(getMasteredIds);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -48,6 +53,16 @@ export default function CategoryPage() {
         }
     }, [id]);
 
+    // Saves the purchase in localStorage and updates the state, so the row re-renders as bought.
+    function handleBuy(elementId) {
+        setOwned(buyElement(elementId));
+    }
+
+    // Saves the new mastered list in localStorage and updates the state, so the checkbox re-renders.
+    function handleToggleMastered(elementId) {
+        setMastered(toggleMastered(elementId));
+    }
+
     if (loading) return <main className='container'><p className='status-message'>Loading...</p></main>;
     // Short message for the user, without technical details
     if (error) return <main className='container'><p className='status-message'>Category could not be loaded.</p></main>;
@@ -56,6 +71,10 @@ export default function CategoryPage() {
         <ElementRow
             key={element.id}
             element={element}
+            owned={owned.includes(element.id)}
+            mastered={mastered.includes(element.id)}
+            onBuy={handleBuy}
+            onToggleMastered={handleToggleMastered}
         />
     );
 

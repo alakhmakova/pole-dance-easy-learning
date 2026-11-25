@@ -1,4 +1,4 @@
-/* One row of the elements table: picture, name and tech value, level, Buy button. */
+/* One row of the elements table: picture, name and tech value, level, Buy button or Mastered checkbox. */
 
 .thumb {
     display: flex;
@@ -52,4 +52,43 @@
 .status .btn {
     padding: 7px 16px;
     font-size: 12px;
+}
+
+/* Mastered checkbox: a round olive circle, filled with a tick when the element is mastered. */
+.check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* appearance: none removes the browser's own square checkbox, so it can be drawn with CSS. */
+.check input {
+    appearance: none;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    border: 2px solid var(--ok);
+    border-radius: 50%;
+    background: var(--panel);
+    color: var(--panel);
+    font: 700 18px/1 var(--body);
+    cursor: pointer;
+}
+
+.check input:checked {
+    background: var(--ok);
+}
+
+/* The tick is text added by CSS; it is white because color is var(--panel). */
+.check input:checked::after {
+    content: "\2713";
+}
+
+/* Visible ring for keyboard users (Tab to the checkbox, Space to tick it). */
+.check input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
 }

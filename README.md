@@ -3,6 +3,57 @@
 ## Project documentation
 
 - [Routing: why BrowserRouter, and Link instead of a](docs/routing.md)
+- [Learning log: documentation behind each commit](docs/learning-log.md)
+- [Event handlers: passing a function, not calling it](docs/event-handlers.md)
+
+## Buying elements and marking them as mastered
+
+There is no payment and no user account yet. Progress is saved only in the
+browser, in `localStorage` (code in `src/storage.js`).
+
+- On a category page, click **Buy · €4**. The element counts as bought, and
+  the button turns into a round **Mastered** checkbox.
+- Tick the checkbox to mark the element as mastered, untick it to remove the
+  mark. A bought element stays bought: as in a real shop, there is no button
+  that cancels a purchase.
+
+The browser keeps two lists of element ids:
+
+| Key | Example value | Meaning |
+| --- | --- | --- |
+| `pole.owned` | `["F1","F4"]` | bought elements |
+| `pole.mastered` | `["F1"]` | elements marked as mastered |
+
+Each new id is added at the end, so the last id in a list is the latest
+action. The ids are the `id` values in `public/data/elements.json`.
+
+Progress belongs to one browser and one address: `localhost` and the Vercel
+site have separate lists, and a private (incognito) window starts with none.
+
+### Reset progress, for example before the next demo
+
+**All progress:**
+
+1. Open the site and press F12 to open the developer tools.
+2. Chrome or Edge: tab **Application** → **Local storage** → the site's
+   address. Firefox: tab **Storage** → **Local Storage** → the site's address.
+3. Select `pole.owned` and press Delete. Do the same for `pole.mastered`.
+4. Reload the page.
+
+The same in one step: in the **Console** tab, run
+`localStorage.removeItem("pole.owned"); localStorage.removeItem("pole.mastered");`
+and reload the page.
+
+**One element:** in the same list of keys, double-click the value of
+`pole.owned` and remove that element's id, for example change `["F1","F4"]`
+to `["F1"]`. Remove it from `pole.mastered` too, then reload the page.
+
+### Why element ids are not shown on the site
+
+Students don't need an element's id to buy or learn it, so the site shows only
+names. To find an id now, look it up in `public/data/elements.json`, or take
+the last id in `pole.owned` for the latest purchase. An admin panel for the
+site owner, where ids are useful, is a possible next step.
 
 ## Development notes
 
