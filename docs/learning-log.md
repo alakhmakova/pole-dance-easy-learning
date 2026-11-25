@@ -166,3 +166,33 @@ the data in props (`element.id`); why `Link` cannot wrap a `tr`; the
 - React Router: [Link](https://reactrouter.com/api/components/Link), [useParams](https://reactrouter.com/api/hooks/useParams), [useNavigate](https://reactrouter.com/api/hooks/useNavigate) (why Link is better for normal links)
 - MDN: [::after](https://developer.mozilla.org/en-US/docs/Web/CSS/::after), [inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset), [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index), [:has()](https://developer.mozilla.org/en-US/docs/Web/CSS/:has), [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition), [box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix), [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 - More in the README section "Opening an element page from the elements table"
+
+## 16. Add element page and lock badges on elements that are not bought
+
+**Topics (element page):** sharing a function between components through its own module
+(`src/level.js`), finding one item in a list with `find` after loading,
+why code must not read properties of `undefined` before the "not found" check,
+a value computed from state (`isMastered`) instead of a function, the click event
+that React passes to `onClick` (and why an arrow function passes the id instead),
+redirecting with the `Navigate` component and `replace`, rendering a list with `map` and `key`.
+
+- React: [Rendering Lists](https://react.dev/learn/rendering-lists), [Responding to Events: passing handlers](https://react.dev/learn/responding-to-events#passing-event-handlers-as-props)
+- React Router: [Navigate](https://reactrouter.com/api/components/Navigate)
+- MDN: [JavaScript modules: export and import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), [Array.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+**Topics (landscape images and the leaf icon):** the `onLoad` event of an image and the event object
+(`event.target`), comparing `naturalWidth` and `naturalHeight` to find landscape pictures,
+a state value (`wide`) that switches a CSS class, a grid item that spans all columns (`grid-column: 1 / -1`)
+only when it is a direct child of the grid, a decorative image with an empty `alt`,
+icon and text in one row with `display: flex` and `gap`, crediting a CC BY icon.
+
+- React: [Image events (onLoad)](https://react.dev/reference/react-dom/components/common#image-events)
+- MDN: [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target), [naturalWidth](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/naturalWidth), [grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column), [img alt](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt)
+
+**Topics (lock badge):** a class name chosen with a ternary (`className={owned ? undefined : "locked"}`),
+showing something only when a condition is true with `&&`, inline SVG with
+`currentColor`, `aria-hidden` for decorative icons, `opacity` and `filter: grayscale()`,
+a badge in the corner with `position: absolute` inside a `position: relative` box.
+
+- React: [Conditional Rendering: Logical AND operator](https://react.dev/learn/conditional-rendering#logical-and-operator-)
+- MDN: [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter), [opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity), [currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword), [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden)

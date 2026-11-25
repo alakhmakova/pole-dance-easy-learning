@@ -163,3 +163,35 @@ a.el-name::after {
 .table-box tr:has(a.el-name:hover) {
     background: var(--tint);
 }
+
+/* Element that is not bought yet: the picture is paler and partly grey. */
+.locked .thumb img {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+}
+
+/* The picture box is the frame for the lock badge in its corner. */
+.thumb {
+    position: relative;
+}
+
+/* Round terracotta badge with a white lock, on the bottom-right corner of the picture. */
+.lock {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+/* The lock is a filled shape in the text colour of the badge (white). */
+.lock svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}

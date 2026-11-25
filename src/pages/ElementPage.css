@@ -1,0 +1,234 @@
+/* Element page: picture on the left, name, badges, description, criteria and the Mastered button on the right
+   (styles from the mockup). Breadcrumbs use .crumbs from CategoryPage.css. */
+
+/* Two equal columns; one column on narrow screens. */
+.el-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+    padding-top: 32px;
+}
+
+/* Picture box: the whole picture is always visible (object-fit: contain), never cropped. */
+.el-image {
+    aspect-ratio: 3 / 4;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel);
+}
+
+.el-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Category name above the element name: small uppercase terracotta text. */
+.eyebrow {
+    display: block;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.el-info h1 {
+    margin: 10px 0 16px;
+    font-size: clamp(40px, 5vw, 60px);
+}
+
+/* Level and tech value: outlined terracotta pills. */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.badge {
+    padding: 5px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.el-desc {
+    max-width: 60ch;
+    margin: 0;
+}
+
+.el-info h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 10px;
+    font-size: 22px;
+}
+
+/* Small leaf before the heading (decoration, so alt="" in the JSX). */
+.el-info h2 img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Criteria list: label on the left (small uppercase terracotta), text on the right. */
+.points {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.points li {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+}
+
+.points li b {
+    padding-top: 3px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* Mastered button: a wide card with a round olive circle on the left.
+   Not mastered: dashed border on a soft background. Mastered (aria-pressed="true"):
+   solid olive border, white background, filled circle with a tick. */
+.master-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 32px;
+    padding: 16px 20px;
+    border: 2px dashed var(--soft);
+    border-radius: 16px;
+    background: var(--tint);
+    color: var(--text);
+    text-align: left;
+}
+
+/* Title of the button (bold) and the note under it (regular, smaller). */
+.master-btn b {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 16px;
+}
+
+.master-btn .note {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.master-btn:hover {
+    border-color: var(--ok);
+}
+
+/* The circle is drawn by CSS before the button text. */
+.master-btn::before {
+    content: "";
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ok);
+    border-radius: 50%;
+    background: var(--panel);
+    color: var(--panel);
+    font-size: 18px;
+}
+
+.master-btn[aria-pressed="true"] {
+    border-style: solid;
+    border-color: var(--ok);
+    background: var(--panel);
+}
+
+.master-btn[aria-pressed="true"]::before {
+    content: "\2713";
+    background: var(--ok);
+}
+
+/* Wide (landscape) picture: the picture takes the full width on top,
+   and the text below it is split into two columns: name, badges, description | criteria.
+   The Mastered button stretches under both columns. */
+.el-wrap.wide {
+    grid-template-columns: 1fr;
+    gap: 36px;
+}
+
+.el-wrap.wide .el-image {
+    aspect-ratio: 16 / 9;
+}
+
+.el-wrap.wide .el-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 56px;
+    align-items: start;
+}
+
+.el-wrap.wide .el-text {
+    grid-column: 1;
+}
+
+.el-wrap.wide .el-aim {
+    grid-column: 2;
+}
+
+.el-wrap.wide .el-aim h2 {
+    margin-top: 6px;
+}
+
+.el-wrap.wide .master-btn {
+    grid-column: 1 / -1;
+}
+
+/* Narrow screens: picture above the text; criteria label above its text on phones. */
+@media (max-width: 820px) {
+    .el-wrap {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .el-image {
+        max-width: 420px;
+    }
+
+    .el-wrap.wide .el-image {
+        max-width: none;
+        aspect-ratio: 4 / 3;
+    }
+
+    .el-wrap.wide .el-info {
+        grid-template-columns: 1fr;
+    }
+
+    .el-wrap.wide .el-text,
+    .el-wrap.wide .el-aim {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .points li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
