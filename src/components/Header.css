@@ -59,3 +59,57 @@
 .main-menu a:hover {
     color: var(--accent)
 }
+
+/* The logo text never breaks into two lines. */
+.logo {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Menu button: hidden on wide screens, shown on phones instead of the links. */
+.menu-btn {
+    display: none;
+    padding: 7px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: none;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.menu-btn:hover {
+    background: var(--tint);
+}
+
+/* Phones: the links are hidden behind the Menu button and open as a list under the logo. */
+@media (max-width: 560px) {
+    .header .container {
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+    }
+
+    .main-menu.open {
+        display: flex;
+    }
+
+    /* Links are centred in the open menu. */
+    .main-menu a {
+        padding-block: 12px;
+        border-top: 1px solid var(--line);
+        text-align: center;
+    }
+}

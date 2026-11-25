@@ -122,14 +122,28 @@ fluid font size with `clamp()`.
 - React: [Conditional Rendering](https://react.dev/learn/conditional-rendering), [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
 - MDN: [table](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table), [Number.toFixed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed), [border-collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse), [overflow-x](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x), [clamp()](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
 
-## In progress: buying elements and marking them as mastered
+## 12. Add buying, mastered progress and category counts
 
 **Topics:** saving data in the browser with `localStorage`, turning arrays
 into text and back with `JSON.stringify` and `JSON.parse`, handling errors
 with `try...catch`, building a new array with spread syntax, checking a value
 with `includes`, removing a value with `filter`, event handlers (`onClick`,
-`onChange`) and passing an argument with an arrow function.
+`onChange`) and passing an argument with an arrow function, counting with
+`filter` + `includes` + `length` instead of storing numbers that can be computed.
 
 - MDN: [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify), [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse), [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch), [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), [Array.includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes), [Arrow function expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 - React: [Updating Arrays in State](https://react.dev/learn/updating-arrays-in-state), [useState: Avoiding recreating the initial state](https://react.dev/reference/react/useState#avoiding-recreating-the-initial-state), [Responding to Events](https://react.dev/learn/responding-to-events#adding-event-handlers), [Controlling an input with a state variable](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)
 - My own notes: [event-handlers.md](event-handlers.md)
+
+## 13. Add phone menu and make elements table responsive
+
+**Topics:** media queries (`@media (max-width: ...)`), a Menu button that
+opens and closes the links on phones (`useState` with `true`/`false`, a class
+name chosen with a ternary, `aria-expanded`), keeping text on one line with
+`white-space: nowrap` and `flex-shrink: 0`, turning table rows into small
+cards on phones with CSS Grid (`display: grid` on `tr`, `grid-column`,
+`grid-row`).
+
+- MDN: [Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries), [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap), [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink), [white-space](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space), [Basic concepts of grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout), [grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column), [grid-row](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row)
+- MDN: [aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded)
+- [Device Mode](https://developer.chrome.com/docs/devtools/device-mode) (Chrome DevTools: how to check the site at phone width)
