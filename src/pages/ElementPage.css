@@ -252,8 +252,11 @@
         gap: 28px;
     }
 
+    /* Portrait picture: centred above the text. */
     .el-image {
+        width: 100%;
         max-width: 420px;
+        justify-self: center;
     }
 
     .el-wrap.wide .el-image {

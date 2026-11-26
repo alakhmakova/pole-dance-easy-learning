@@ -11,7 +11,7 @@ export default function Hero() {
         <section className='hero container'>
             <div className='hero-text'>
                 <span className='eyebrow'><img src={leafUrl} alt='' />Online pole lessons</span>
-                <h1>Listen to your body, <em>grow</em> your pole skills</h1>
+                <h1><span className='line'>Listen to your body,</span> <span className='line'><em>grow</em> your pole skills</span></h1>
                 <p>Choose a category, unlock the elements your body is ready for, and move at your own pace. Every element follows the IPSF Code of Points.</p>
                 <div className='hero-actions'>
                     {/* A link to #catalog: the browser scrolls down to the element with id="catalog" on this page. */}

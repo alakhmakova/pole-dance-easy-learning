@@ -10,10 +10,22 @@
 
 .hero h1 {
     margin-top: 14px;
-    font-size: clamp(40px, 5.6vw, 68px);
+    font-size: clamp(40px, 5.4vw, 64px);
 }
 
 /* The word "grow" in the slogan: terracotta, like the accent colour. */
+/* Two phrases of the slogan, each kept on its own line on tablets and desktops.
+   Phones (480px and less) wrap the words freely: the phrases are too long for one line there. */
+.hero h1 .line {
+    display: inline-block;
+}
+
+@media (max-width: 480px) {
+    .hero h1 .line {
+        display: inline;
+    }
+}
+
 .hero h1 em {
     color: var(--accent);
     font-weight: 500;
@@ -126,9 +138,22 @@
     height: 52px;
 }
 
-@media (max-width: 820px) {
+/* One column on tablets and phones: text, buttons and picture are centred. */
+@media (max-width: 840px) {
     .hero {
         grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero p {
+        margin-inline: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
     }
 
     .hero-art {
