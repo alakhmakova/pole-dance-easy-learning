@@ -1,6 +1,8 @@
 import { Link } from 'react-router';
 import './ElementRow.css';
 import { getLevel } from '../utils';
+import levelLeafUrl from '../assets/images/level-leaf.svg';
+import levelLeafOffUrl from '../assets/images/level-leaf-off.svg';
 
 // Shows one element as a table row: picture, name and tech value, difficulty level,
 // and a Buy button (not bought yet) or a Mastered checkbox (bought).
@@ -39,7 +41,7 @@ export default function ElementRow({ element, owned, mastered, onBuy, onToggleMa
                 <span className="level">
                     <span className="leaves">
                         {[1, 2, 3].map(n =>
-                            <img key={n} src={n <= leafCount ? '/images/level-leaf.svg' : '/images/level-leaf-off.svg'} alt='' />
+                            <img key={n} src={n <= leafCount ? levelLeafUrl : levelLeafOffUrl} alt='' />
                         )}
                     </span>
                     {level}

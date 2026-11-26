@@ -195,6 +195,56 @@
     grid-column: 1 / -1;
 }
 
+/* Pager under the element (from the mockup): previous on the left, back to the category in the middle,
+   next on the right. A missing previous or next element is shown pale and cannot be clicked. */
+.pager {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    margin-top: 48px;
+    padding-block: 28px 56px;
+    border-top: 1px solid var(--line);
+}
+
+.pager .step {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pager a.step:hover {
+    color: var(--accent);
+}
+
+.pager .back {
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.pager .next {
+    justify-self: end;
+}
+
+.pager .disabled {
+    opacity: 0.4;
+}
+
+/* Phones: the link back to the category on its own line on top, previous and next under it. */
+@media (max-width: 640px) {
+    .pager {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pager .back {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        justify-self: center;
+    }
+}
+
 /* Narrow screens: picture above the text; criteria label above its text on phones. */
 @media (max-width: 820px) {
     .el-wrap {

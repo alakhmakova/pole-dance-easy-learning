@@ -5,6 +5,7 @@
 // that scroll to this footer, not separate pages.
 import { Link } from "react-router";
 import './Footer.css';
+import logoUrl from '../assets/images/logo.svg';
 
 const siteName = "Pole Dance";
 const siteTagline = "Easy Learning";
@@ -15,7 +16,7 @@ export default function Footer() {
             <div className="container footer-grid">
                 <section id="about" className="footer-col">
                     <Link to="/" className="logo">
-                        <img src="/images/logo.svg" alt="" />
+                        <img src={logoUrl} alt="" />
                         <div className="logo-text">
                             <p className="site-name">{siteName}</p>
                             <p className="site-tagline">{siteTagline}</p>
@@ -56,7 +57,7 @@ export default function Footer() {
                     <button className="btn" type="submit">Send message</button>
                 </form>
             </div>
-            <p className="container footer-bottom">© 2026 Pole Dance Easy Learning · Logo flowers by Hary Murdiono JS, Noun Project (CC BY 3.0) · Leaf icons by Ladang Visual, Noun Project (CC BY 3.0) · Lock icon by White Spaces Inc., Noun Project (CC BY 3.0)</p>
+            <p className="container footer-bottom">© 2026 Pole Dance Easy Learning · Logo, flowers and branch by Hary Murdiono JS, Noun Project (CC BY 3.0) · Leaf icons by Ladang Visual, Noun Project (CC BY 3.0) · Lock icon by White Spaces Inc., Noun Project (CC BY 3.0)</p>
         </footer>
     );
 }

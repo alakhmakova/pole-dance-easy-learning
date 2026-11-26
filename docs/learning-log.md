@@ -206,7 +206,28 @@ a filtered list computed during render instead of a second state, `filter` with 
 `return` (so the search field stays on the page), a fragment `<>...</>` that adds no extra element,
 shared helpers in `src/utils.js` (`getLevel`, `matchesSearch`), `aria-pressed` on toggle buttons.
 Level leaves in the table: `indexOf` to turn the level into a number, `map` over `[1, 2, 3]` to draw three images.
+Progress bar on catalog cards (an inline `style` with a computed width), previous / next links on the element page
+(`findIndex`, reading `array[index]` outside the list gives `undefined`), scrolling to the top in an Effect with `[id]`.
+Hero section on the home page: a link to `#catalog` that scrolls to an element with that id, `scroll-behavior: smooth`
+with `prefers-reduced-motion`, decorations placed with `position: absolute` around a `position: relative` box,
+`overflow: hidden` to cut a picture to rounded corners, one `h1` per page (the catalog title became `h2`).
 README section "How to trace the data" describes each chain step by step.
 
 - React: [Thinking in React](https://react.dev/learn/thinking-in-react), [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components), [Avoid redundant state](https://react.dev/learn/choosing-the-state-structure#avoid-redundant-state), [Controlling an input with a state variable](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable), [Fragment](https://react.dev/reference/react/Fragment)
 - JavaScript: [Array methods](https://javascript.info/array-methods), [Strings](https://javascript.info/string), [Logical operators](https://javascript.info/logical-operators)
+
+## 18. Move decorative pictures from public/images to src/assets/images
+
+**Rule.** `public/` is for files the site asks for by a URL string at runtime: `data/*.json`,
+category pictures and element pictures (their paths are written in the JSON files), `favicon.svg`
+(used in `index.html`). Files there are copied as they are and nobody checks that a path is right.
+`src/assets/` is for pictures a component uses directly: they are imported in JavaScript,
+`import leafUrl from '../assets/images/leaf.svg'`, and used as `src={leafUrl}`.
+Vite then checks the file exists (a wrong path breaks the build, not the live site),
+adds a hash to the file name so browsers never keep an old copy, and puts very small files
+(under 4 KB, like `sparkle.svg` and the level leaves) straight into the code as data URLs.
+
+**Moved:** logo, leaf, level leaves, hero branch and flowers, sparkle, divider sprig.
+**Stayed in public:** `data/`, `images/*.jpg`, `images/elements/`, `favicon.svg`.
+
+- Vite: [Static Asset Handling](https://vite.dev/guide/assets), [The public directory](https://vite.dev/guide/assets#the-public-directory)

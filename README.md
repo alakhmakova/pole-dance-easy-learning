@@ -163,6 +163,7 @@ on the screen is computed again on each render from that state.
 | --- | --- | --- |
 | Catalog card | "8 elements" | `countElementsInCategory(category.id)` in `CategoryList.jsx`: elements of all categories (`getAllElements()`), filtered by `categoryId`, then `.length` |
 | Catalog card | "1/3 mastered" | `countIdsInCategory(masteredIds, category.id)` / `countIdsInCategory(ownedIds, category.id)` in `CategoryList.jsx`: the category's elements whose id is in the list, then `.length`. The two lists are read once from `localStorage` with `getMasteredIds()` and `getOwnedIds()` |
+| Catalog card | Olive progress bar | `masteredPercent` in `CategoryCard.jsx`: `Math.round(categoryMastered / categoryOwned * 100)`, or 0 when nothing is bought; it becomes the `width` of the olive part (`style={{ width: ... }}`) |
 | Category page header | "1 / 3 mastered of the elements you own" | `masteredCount` and `ownedCount` in `CategoryPage.jsx`: `elements.filter(el => mastered.includes(el.id)).length` and the same with `owned`. `elements` already holds only this category (`getElements(id)` in `src/api.js`) |
 | Table row, element page | Level: Beginner, Intermediate, Advanced | `getLevel(element.techValue)` in `src/utils.js`: up to 0.3 Beginner, up to 0.6 Intermediate, higher Advanced |
 | Table row | Leaves before the level | `leafCount` in `ElementRow.jsx`: position of the level in `['Beginner', 'Intermediate', 'Advanced']` plus 1; that many filled leaves, the rest are outlines |
@@ -171,12 +172,66 @@ on the screen is computed again on each render from that state.
 Only bought elements have a checkbox, so a mastered element is always a bought
 one, and "mastered" is never larger than "owned".
 
+### Previous / next element on the element page
+
+1. `ElementPage.jsx`: `ownedInCategory` = bought elements of the same category, in the order of `elements.json`
+   (`elements.filter(el => el.categoryId === element.categoryId && ownedIds.includes(el.id))`).
+2. `position = ownedInCategory.findIndex(el => el.id === element.id)`; `previousElement` and `nextElement`
+   are the elements at `position - 1` and `position + 1`, or `undefined` at the start or the end of the list.
+3. If there is a previous or next element, the pager shows a `Link` to `/element/<id>`; otherwise a pale
+   text that cannot be clicked. The middle link goes back to the category page.
+4. The address changes but the same page component stays open, so an Effect with `[id]` calls
+   `window.scrollTo(0, 0)` to show the new element from the top.
+
 ### Wide (landscape) pictures on the element page
 
 1. `ElementPage.jsx`: the picture has `onLoad={(event) => setWide(event.target.naturalWidth > event.target.naturalHeight)}`.
    `naturalWidth` and `naturalHeight` are the real size of the image file.
 2. `wide` becomes `true` for a landscape picture, and `div.el-wrap` gets the class `wide`.
 3. `ElementPage.css`, rules `.el-wrap.wide`: the picture takes the full width, the text goes into two columns under it.
+
+## Ways to move between pages and places on a page
+
+The site uses several kinds of links. Each one does a different job.
+
+| Kind | Where in the code | What happens | Page reloads? |
+| --- | --- | --- | --- |
+| `<Link to="/...">` from `react-router` | category cards, element names in the table, breadcrumbs, logo, Previous / next element | Opens another page of the site (another route) | No, React only swaps the page component |
+| `<Navigate to="..." replace />` from `react-router` | `ElementPage.jsx`, element that is not bought | Sends the visitor to another page by itself, without a click | No |
+| `<a href="#id">` (hash link) | "Browse categories" in the hero (`#catalog`), "About" and "Contact" in the header (`#about`, `#contact`) | Scrolls to the element with that `id` on the same page | No |
+| `window.scrollTo(0, 0)` in an Effect | `ElementPage.jsx`, when `id` changes | JavaScript scrolls the page to the top | No |
+
+### Link and Navigate: other pages of the site
+
+- `Link` is written like `<Link to="/category/flexibility">`. In the browser it becomes a normal `<a>`,
+  but React Router stops the reload and only shows the new page component. A plain `<a href="/category/flexibility">`
+  would load the whole site again, so links between pages of the site always use `Link`.
+- `Navigate` is a component, not a link. When React draws it, the address changes at once.
+  `replace` means the old address is replaced in the history, so the Back button does not return
+  to the locked element and send the visitor away again.
+
+### Hash links: a place on the same page
+
+1. The link has `href="#catalog"`. The `#` means "not a new page, a place on this page".
+2. The target has `id="catalog"` (`<section id="catalog">` in `CatalogPage.jsx`).
+3. On click the browser finds the element with this `id` and scrolls to it. No JavaScript is needed.
+4. `index.css`: `html { scroll-behavior: smooth; }` makes the scroll smooth. It is inside
+   `@media (prefers-reduced-motion: no-preference)`, so visitors who turned off animations in their
+   system get a jump instead of a moving page.
+5. "About" and "Contact" work from every page, because the footer with `#about` and `#contact` is on every page.
+   `#catalog` exists only on the home page.
+
+### Scrolling with JavaScript
+
+- `window.scrollTo(0, 0)` scrolls the whole window to the top. The element page uses it because
+  Previous / next keeps the same page component open, and the browser would stay at the old scroll position.
+- Not used yet: `element.scrollIntoView({ behavior: 'smooth' })` scrolls to one element after some action
+  (for example after a form is sent). In React the element is usually found with `useRef`.
+
+Read more: [Link](https://reactrouter.com/api/components/Link), [Navigate](https://reactrouter.com/api/components/Navigate),
+[scroll-behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior),
+[scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView),
+[scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo).
 
 ## Development notes
 

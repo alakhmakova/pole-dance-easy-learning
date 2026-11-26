@@ -1,6 +1,7 @@
 import './Header.css'
 import { useState } from "react";
 import { Link } from "react-router";
+import logoUrl from '../assets/images/logo.svg';
 
 const siteName = "Pole Dance";
 const siteTagline = "Easy Learning";
@@ -14,7 +15,7 @@ export default function Header() {
         <header className="header">
             <div className="container">
                 <Link to="/" className="logo">
-                    <img src="/images/logo.svg" alt="" />
+                    <img src={logoUrl} alt="" />
                     <div className="logo-text">
                         <p className="site-name">{siteName}</p>
                         <p className="site-tagline">{siteTagline}</p>

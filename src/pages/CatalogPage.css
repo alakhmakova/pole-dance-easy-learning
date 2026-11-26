@@ -8,6 +8,7 @@
     column-gap: 24px;
     align-items: end;
     padding-top: 48px;
+    padding-bottom: 56px;
 }
 
 /* Everything takes the full row by default (cards list, Loading and error messages). */
@@ -40,7 +41,7 @@
     height: 20px;
 }
 
-.cat-head h1 {
+.cat-head h2 {
     margin: 8px 0 0;
     font-size: clamp(30px, 4vw, 44px);
 }

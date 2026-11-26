@@ -126,6 +126,16 @@ main {
   border-color: var(--accent-hover);
 }
 
+/* Outline button variant: add together with .btn, e.g. class="btn btn-ghost" */
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-ghost:hover {
+  background: var(--tint);
+}
+
 /* Price button variant: add together with .btn, e.g. class="btn btn-price" */
 .btn-price {
   background: var(--price);
@@ -136,4 +146,12 @@ main {
 .btn-price:hover {
   background: var(--price-hover);
   border-color: var(--price-hover);
+}
+
+/* Links to a place on the same page (like #catalog) scroll smoothly,
+   except for people who asked their system for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

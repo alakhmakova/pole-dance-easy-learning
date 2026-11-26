@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getMasteredIds, getOwnedIds, toggleMastered } from '../storage';
 import { Link, Navigate, useParams } from 'react-router';
 import { getAllElements, getCategories } from '../api';
+import leafUrl from '../assets/images/leaf.svg';
 
 export default function ElementPage() {
     const { id } = useParams();
@@ -42,6 +43,12 @@ export default function ElementPage() {
         }
     }, []);
 
+    // The same page stays open when Previous / Next changes the address, so the browser keeps the scroll position.
+    // This Effect scrolls back to the top every time the element id changes.
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     // Saves the new mastered list in localStorage and updates the state, so the Mastered button re-renders.
     function handleToggleMastered(elementId) {
         setMastered(toggleMastered(elementId));
@@ -56,7 +63,14 @@ export default function ElementPage() {
     const category = categories.find(c => c.id === element.categoryId);
     if (!category) return <main className='container'><p className='status-message'>Category not found.</p></main>;
     const isMastered = mastered.includes(element.id);
-    if (getOwnedIds().includes(id)) {
+    const ownedIds = getOwnedIds();
+    // Previous / next links: bought elements of the same category, in the order of elements.json.
+    // An element at the start or the end of this list has no previous or next element (undefined).
+    const ownedInCategory = elements.filter(el => el.categoryId === element.categoryId && ownedIds.includes(el.id));
+    const position = ownedInCategory.findIndex(el => el.id === element.id);
+    const previousElement = ownedInCategory[position - 1];
+    const nextElement = ownedInCategory[position + 1];
+    if (ownedIds.includes(id)) {
         return (
             <main className='container'>
                 <div className='crumbs'>
@@ -79,7 +93,7 @@ export default function ElementPage() {
                             <p className='el-desc'>{element.description}</p>
                         </div>
                         <div className='el-aim'>
-                            <h2><img src='/images/leaf.svg' alt='' />What to aim for</h2>
+                            <h2><img src={leafUrl} alt='' />What to aim for</h2>
                             <ul className='points'>
                                 {element.criteria.map(point =>
                                     <li key={point.label}>
@@ -101,6 +115,21 @@ export default function ElementPage() {
                         </button>
                     </div>
                 </div>
+                {/* Pager under the element: previous bought element, back to the category, next bought element.
+                    Without a previous or next element the link is a grey text that cannot be clicked. */}
+                <nav className='pager' aria-label='Elements of this category'>
+                    {previousElement ? (
+                        <Link to={`/element/${previousElement.id}`} className='step'>← Previous element</Link>
+                    ) : (
+                        <span className='step disabled'>← Previous element</span>
+                    )}
+                    <Link to={`/category/${element.categoryId}`} className='step back'>All {category.name} elements</Link>
+                    {nextElement ? (
+                        <Link to={`/element/${nextElement.id}`} className='step next'>Next element →</Link>
+                    ) : (
+                        <span className='step next disabled'>Next element →</span>
+                    )}
+                </nav>
             </main>
         );
     } else {

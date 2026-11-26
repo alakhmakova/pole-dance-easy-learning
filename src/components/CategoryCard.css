@@ -41,3 +41,18 @@
 .category-meta p {
     margin: 0;
 }
+
+/* Progress bar under the numbers (from the mockup): a thin grey line, the olive part is the mastered share. */
+.bar {
+    height: 6px;
+    margin-top: 8px;
+    border-radius: 3px;
+    background: var(--line);
+    overflow: hidden;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: var(--ok);
+}
