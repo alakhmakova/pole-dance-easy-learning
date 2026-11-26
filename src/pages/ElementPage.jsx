@@ -1,5 +1,5 @@
 import './ElementPage.css';
-import { getLevel } from '../level';
+import { getLevel } from '../utils';
 import { useEffect, useState } from 'react';
 import { getMasteredIds, getOwnedIds, toggleMastered } from '../storage';
 import { Link, Navigate, useParams } from 'react-router';

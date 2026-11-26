@@ -1,0 +1,58 @@
+/* Catalog page layout (from the mockup): the heading on the left and the search on the right
+   in one row, the category cards below across the full width.
+   main is a grid; the heading, the search field and the cards list are its direct children
+   (CategoryList returns the search and the list in a fragment, without a wrapper). */
+.catalog {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    column-gap: 24px;
+    align-items: end;
+    padding-top: 48px;
+}
+
+/* Everything takes the full row by default (cards list, Loading and error messages). */
+.catalog > * {
+    grid-column: 1 / -1;
+}
+
+/* "Catalog" label with a leaf above the big title, in the left column. */
+.catalog > .cat-head {
+    grid-column: 1;
+    margin-bottom: 32px;
+}
+
+/* Search field in the right column, on the line of the title. */
+.catalog > .search {
+    grid-column: 2;
+    margin: 0 0 32px;
+}
+
+/* .eyebrow (small uppercase terracotta text) comes from index.css;
+   here it is a row, so the leaf stands to the left of the word. */
+.cat-head .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cat-head .eyebrow img {
+    width: 20px;
+    height: 20px;
+}
+
+.cat-head h1 {
+    margin: 8px 0 0;
+    font-size: clamp(30px, 4vw, 44px);
+}
+
+/* Narrow screens: the search goes under the title, across the full width. */
+@media (max-width: 720px) {
+    .catalog > .cat-head,
+    .catalog > .search {
+        grid-column: 1 / -1;
+    }
+
+    .catalog > .cat-head {
+        margin-bottom: 20px;
+    }
+}

@@ -196,3 +196,17 @@ a badge in the corner with `position: absolute` inside a `position: relative` bo
 
 - React: [Conditional Rendering: Logical AND operator](https://react.dev/learn/conditional-rendering#logical-and-operator-)
 - MDN: [filter](https://developer.mozilla.org/en-US/docs/Web/CSS/filter), [opacity](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity), [currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword), [aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden)
+
+## 17. Add search, level filters and headings to catalog and category pages
+
+**Topics:** a reusable controlled input (`SearchBox` gets `value`, `onChange` and `placeholder` from the page),
+lifting state up (the page keeps `searchText` and `level`, the child components only show and report them),
+a filtered list computed during render instead of a second state, `filter` with `includes`, `toLowerCase` and `trim`,
+`&&` runs before `||` (parentheses around the level condition), a ternary for "nothing found" instead of an early
+`return` (so the search field stays on the page), a fragment `<>...</>` that adds no extra element,
+shared helpers in `src/utils.js` (`getLevel`, `matchesSearch`), `aria-pressed` on toggle buttons.
+Level leaves in the table: `indexOf` to turn the level into a number, `map` over `[1, 2, 3]` to draw three images.
+README section "How to trace the data" describes each chain step by step.
+
+- React: [Thinking in React](https://react.dev/learn/thinking-in-react), [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components), [Avoid redundant state](https://react.dev/learn/choosing-the-state-structure#avoid-redundant-state), [Controlling an input with a state variable](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable), [Fragment](https://react.dev/reference/react/Fragment)
+- JavaScript: [Array methods](https://javascript.info/array-methods), [Strings](https://javascript.info/string), [Logical operators](https://javascript.info/logical-operators)

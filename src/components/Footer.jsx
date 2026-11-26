@@ -56,7 +56,7 @@ export default function Footer() {
                     <button className="btn" type="submit">Send message</button>
                 </form>
             </div>
-            <p className="container footer-bottom">© 2026 Pole Dance Easy Learning · Logo flowers by Hary Murdiono JS, Noun Project (CC BY 3.0) · Leaf icon by Ladang Visual, Noun Project (CC BY 3.0) · Lock icon by White Spaces Inc., Noun Project (CC BY 3.0)</p>
+            <p className="container footer-bottom">© 2026 Pole Dance Easy Learning · Logo flowers by Hary Murdiono JS, Noun Project (CC BY 3.0) · Leaf icons by Ladang Visual, Noun Project (CC BY 3.0) · Lock icon by White Spaces Inc., Noun Project (CC BY 3.0)</p>
         </footer>
     );
 }

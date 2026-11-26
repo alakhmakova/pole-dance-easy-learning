@@ -1,10 +1,14 @@
 import { Link } from 'react-router';
 import './ElementRow.css';
-import { getLevel } from '../level';
+import { getLevel } from '../utils';
 
 // Shows one element as a table row: picture, name and tech value, difficulty level,
 // and a Buy button (not bought yet) or a Mastered checkbox (bought).
 export default function ElementRow({ element, owned, mastered, onBuy, onToggleMastered }) {
+    const level = getLevel(element.techValue);
+    // Number of filled leaves: position of the level in the list, counted from 1.
+    const leafCount = ['Beginner', 'Intermediate', 'Advanced'].indexOf(level) + 1;
+
     return (
         // "locked" greys out the picture of an element that is not bought yet (see ElementRow.css).
         <tr className={owned ? undefined : "locked"}>
@@ -29,7 +33,18 @@ export default function ElementRow({ element, owned, mastered, onBuy, onToggleMa
                 }
                 <div className="tv">Tech value {element.techValue.toFixed(1)}</div>
             </td>
-            <td><span className="level">{getLevel(element.techValue)}</span></td>
+            <td>
+                {/* Level with leaves (from the mockup): 1 filled leaf for Beginner, 2 for Intermediate, 3 for Advanced;
+                    the other leaves are outlines. The leaves are decoration (alt=""), the word says the level. */}
+                <span className="level">
+                    <span className="leaves">
+                        {[1, 2, 3].map(n =>
+                            <img key={n} src={n <= leafCount ? '/images/level-leaf.svg' : '/images/level-leaf-off.svg'} alt='' />
+                        )}
+                    </span>
+                    {level}
+                </span>
+            </td>
             <td>
                 <div className="status">
                     {owned ? (

@@ -2,21 +2,25 @@
   {
     "id": "flexibility",
     "name": "Flexibility",
+    "description": "Splits, backbends and leg hangs that open your legs, back, hips and shoulders.",
     "url": "/images/flexibility.jpg"
   },
   {
     "id": "strength",
     "name": "Strength",
+    "description": "Holds, inverts and lifts that build strength in your arms, core and legs.",
     "url": "/images/strength.jpg"
   },
   {
     "id": "static-spins",
     "name": "Spins on static pole",
+    "description": "Spins on a fixed pole: you create the momentum and hold each shape for at least 360°.",
     "url": "/images/static.jpg"
   },
   {
     "id": "spinning-spins",
     "name": "Spins on spinning pole",
+    "description": "Spins on a pole that turns with you. Hold each shape for at least 720° of rotation.",
     "url": "/images/spinning.jpg"
   }
 ]

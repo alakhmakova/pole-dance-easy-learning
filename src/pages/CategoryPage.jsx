@@ -6,6 +6,9 @@ import { getCategory, getElements } from '../api';
 import ElementRow from '../components/ElementRow';
 import './CategoryPage.css';
 import { buyElement, getMasteredIds, getOwnedIds, toggleMastered } from '../storage';
+import SearchBox from '../components/SearchBox';
+import Filters from '../components/Filters';
+import { getLevel, matchesSearch } from '../utils';
 
 export default function CategoryPage() {
     // useParams reads the parameters from the address of the current page.
@@ -22,6 +25,8 @@ export default function CategoryPage() {
     // The function is passed without (), so React calls it only on the first render, not on every render.
     const [owned, setOwned] = useState(getOwnedIds);
     const [mastered, setMastered] = useState(getMasteredIds);
+    const [searchText, setSearchText] = useState('');
+    const [level, setLevel] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -68,7 +73,13 @@ export default function CategoryPage() {
     // Short message for the user, without technical details
     if (error) return <main className='container'><p className='status-message'>Category could not be loaded.</p></main>;
     if (!category) return <main className='container'><p className='status-message'>Category not found.</p></main>;
-    const listElements = elements.map(element =>
+    // Elements shown in the table: the name contains the search text
+    // and the level matches the chosen button ('All' shows every level).
+    const visibleElements = elements.filter(element => matchesSearch(element.name, searchText) && (level === 'All' || getLevel(element.techValue) === level));
+    // Numbers for the progress in the header: bought elements of this category and mastered ones among them.
+    const ownedCount = elements.filter(el => owned.includes(el.id)).length;
+    const masteredCount = elements.filter(el => mastered.includes(el.id)).length;
+    const listElements = visibleElements.map(element =>
         <ElementRow
             key={element.id}
             element={element}
@@ -84,23 +95,49 @@ export default function CategoryPage() {
             <div className='crumbs'>
                 <Link to='/'>Catalog</Link> / <span>{category.name}</span>
             </div>
-            <h1 className='category-title'>{category.name}</h1>
+            {/* Category header: name and description on the left, mastered progress on the right. */}
+            <div className='cat-top'>
+                <div>
+                    <h1 className='category-title'>{category.name}</h1>
+                    <p className='cat-desc'>{category.description}</p>
+                </div>
+                <div className='progress'>
+                    <b>{masteredCount} / {ownedCount}</b>
+                    <span>mastered of the elements you own</span>
+                </div>
+            </div>
             {elements.length === 0 ? (
                 <p className='status-message'>Elements for this category are coming soon.</p>
             ) : (
-                <div className='table-box'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Element</th>
-                                <th></th>
-                                <th>Difficulty</th>
-                                <th>Mastered</th>
-                            </tr>
-                        </thead>
-                        <tbody>{listElements}</tbody>
-                    </table>
-                </div>
+                <>
+                    <div className='table-tools'>
+                        <SearchBox
+                            value={searchText}
+                            onChange={setSearchText}
+                            placeholder='Search elements'
+                        />
+                        <Filters
+                            selected={level}
+                            onChange={setLevel}
+                        />
+                    </div>
+                    {visibleElements.length === 0 ? (<p className='status-message'>No elements match your search.</p>) : (
+                        <div className='table-box'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Element</th>
+                                        <th></th>
+                                        <th>Difficulty</th>
+                                        <th>Mastered</th>
+                                    </tr>
+                                </thead>
+                                <tbody>{listElements}</tbody>
+                            </table>
+                        </div>
+                    )
+                    }
+                </>
             )}
         </main>
     );

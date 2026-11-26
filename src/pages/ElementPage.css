@@ -25,14 +25,9 @@
     object-fit: contain;
 }
 
-/* Category name above the element name: small uppercase terracotta text. */
-.eyebrow {
+/* Category name above the element name (.eyebrow style is in index.css): on its own line. */
+.el-info .eyebrow {
     display: block;
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
 }
 
 .el-info h1 {

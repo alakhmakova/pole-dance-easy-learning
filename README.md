@@ -48,12 +48,12 @@ and reload the page.
 `pole.owned` and remove that element's id, for example change `["F1","F4"]`
 to `["F1"]`. Remove it from `pole.mastered` too, then reload the page.
 
-### Why element ids are not shown on the site
+### Where to find an element id
 
-Students don't need an element's id to buy or learn it, so the site shows only
-names. To find an id now, look it up in `public/data/elements.json`, or take
-the last id in `pole.owned` for the latest purchase. An admin panel for the
-site owner, where ids are useful, is a possible next step.
+The page of a bought element shows its id in the address: `/element/F1` is
+the element with the id `F1`. The text on the page shows only names, because
+students don't need ids to buy or learn an element. For an element that is not
+bought yet (it has no page), look the id up in `public/data/elements.json`.
 
 ## Opening an element page from the elements table
 
@@ -101,6 +101,82 @@ Docs: [useParams](https://reactrouter.com/api/hooks/useParams),
 [inset](https://developer.mozilla.org/en-US/docs/Web/CSS/inset),
 [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index),
 [:has()](https://developer.mozilla.org/en-US/docs/Web/CSS/:has).
+
+## How to trace the data: search, filters, buying, mastered and counts
+
+Each chain below starts with what the user does and ends with what changes on
+the screen. Read it from top to bottom; every step names the file and the
+function, so you can open them in this order. One rule holds everywhere: the
+**page** keeps the state (`useState`), the small components only show it and
+report clicks through functions they get as props, and every list or number
+on the screen is computed again on each render from that state.
+
+### Search in the catalog
+
+1. The user types in the field: `SearchBox.jsx`, `onChange={(event) => onChange(event.target.value)}`.
+2. `onChange` is `setSearchText` from `CategoryList.jsx`, so the typed text goes into the state `searchText`.
+3. The new state makes React render `CategoryList` again.
+4. `visibleCategories = categories.filter(category => matchesSearch(category.name, searchText))`.
+   `matchesSearch` (`src/utils.js`) compares in lower case and ignores spaces around the search text;
+   an empty field matches every category.
+5. `visibleCategories.map(...)` draws a `CategoryCard` for each one, or the text
+   "No categories match your search." when the list is empty.
+
+### Search and level filter on a category page
+
+1. Typing works as in the catalog: `SearchBox` → `setSearchText` in `CategoryPage.jsx`.
+2. A level button: `Filters.jsx`, `onClick={() => onChange('Beginner')}` (and so on for each level).
+   `onChange` is `setLevel` from `CategoryPage.jsx`; the state `level` is `'All'` at the start.
+3. `Filters` gets `selected={level}` back; the chosen button has `aria-pressed="true"` and is filled (`Filters.css`).
+4. `visibleElements = elements.filter(element => matchesSearch(element.name, searchText) && (level === 'All' || getLevel(element.techValue) === level))`.
+   Both conditions must be true; the parentheses are needed because `&&` runs before `||`.
+5. `visibleElements.map(...)` draws an `ElementRow` for each one, or "No elements match your search.".
+   The search field and the buttons stay on the page, so the user can change the search.
+
+### Buying an element (owned)
+
+1. The user clicks **Buy · €4**: `ElementRow.jsx`, `onClick={() => onBuy(element.id)}`.
+2. `onBuy` is `handleBuy` in `CategoryPage.jsx`, which calls `setOwned(buyElement(elementId))`.
+3. `buyElement(id)` in `src/storage.js` adds the id to the list `pole.owned` in `localStorage`
+   (only once) and returns the new list.
+4. `setOwned` puts the new list into the state `owned`, and the page renders again.
+5. Each row gets `owned={owned.includes(element.id)}`. With `true`, the row shows the Mastered
+   checkbox instead of the Buy button, the name becomes a link to `/element/<id>`, and the lock
+   badge and the grey picture disappear.
+6. The element page checks the same list: `ElementPage.jsx`, `getOwnedIds().includes(id)`.
+   If the element is not bought, `<Navigate>` sends the user back to its category page.
+
+### Marking an element as mastered
+
+1. On a category page: the checkbox in `ElementRow.jsx`, `onChange={() => onToggleMastered(element.id)}`.
+   On an element page: the Mastered button in `ElementPage.jsx`, `onClick={() => handleToggleMastered(element.id)}`.
+2. `handleToggleMastered` (in `CategoryPage.jsx` and in `ElementPage.jsx`) calls `setMastered(toggleMastered(elementId))`.
+3. `toggleMastered(id)` in `src/storage.js` removes the id from `pole.mastered` if it is there, adds it
+   otherwise, saves the list and returns it.
+4. The state `mastered` changes and the page renders again:
+   - category page: each row gets `mastered={mastered.includes(element.id)}` (checkbox ticked or not);
+   - element page: `isMastered = mastered.includes(element.id)` sets `aria-pressed` and the text of the button.
+
+### Numbers on the screen
+
+| Where | What is shown | How it is computed |
+| --- | --- | --- |
+| Catalog card | "8 elements" | `countElementsInCategory(category.id)` in `CategoryList.jsx`: elements of all categories (`getAllElements()`), filtered by `categoryId`, then `.length` |
+| Catalog card | "1/3 mastered" | `countIdsInCategory(masteredIds, category.id)` / `countIdsInCategory(ownedIds, category.id)` in `CategoryList.jsx`: the category's elements whose id is in the list, then `.length`. The two lists are read once from `localStorage` with `getMasteredIds()` and `getOwnedIds()` |
+| Category page header | "1 / 3 mastered of the elements you own" | `masteredCount` and `ownedCount` in `CategoryPage.jsx`: `elements.filter(el => mastered.includes(el.id)).length` and the same with `owned`. `elements` already holds only this category (`getElements(id)` in `src/api.js`) |
+| Table row, element page | Level: Beginner, Intermediate, Advanced | `getLevel(element.techValue)` in `src/utils.js`: up to 0.3 Beginner, up to 0.6 Intermediate, higher Advanced |
+| Table row | Leaves before the level | `leafCount` in `ElementRow.jsx`: position of the level in `['Beginner', 'Intermediate', 'Advanced']` plus 1; that many filled leaves, the rest are outlines |
+| Table row, element page | "Tech value 0.1" | `element.techValue` from `elements.json`; `toFixed(1)` always shows one decimal (1 becomes "1.0") |
+
+Only bought elements have a checkbox, so a mastered element is always a bought
+one, and "mastered" is never larger than "owned".
+
+### Wide (landscape) pictures on the element page
+
+1. `ElementPage.jsx`: the picture has `onLoad={(event) => setWide(event.target.naturalWidth > event.target.naturalHeight)}`.
+   `naturalWidth` and `naturalHeight` are the real size of the image file.
+2. `wide` becomes `true` for a landscape picture, and `div.el-wrap` gets the class `wide`.
+3. `ElementPage.css`, rules `.el-wrap.wide`: the picture takes the full width, the text goes into two columns under it.
 
 ## Development notes
 

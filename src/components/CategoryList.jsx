@@ -3,12 +3,15 @@ import "./CategoryList.css";
 import { useState, useEffect } from "react";
 import { getAllElements, getCategories } from "../api";
 import { getMasteredIds, getOwnedIds } from "../storage";
+import SearchBox from "./SearchBox";
+import { matchesSearch } from "../utils";
 // Shows a CategoryCard for every category from /data/categories.json,
 // with the number of elements, owned and mastered elements in each category.
 
 export default function CategoryList() {
     const [categories, setCategories] = useState([]);
     const [elements, setElements] = useState([]);
+    const [searchText, setSearchText] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -65,7 +68,9 @@ export default function CategoryList() {
     // Ids from localStorage, read once for all cards.
     const ownedIds = getOwnedIds();
     const masteredIds = getMasteredIds();
-    const listCategories = categories.map((category) => (
+    // Categories whose name contains the search text (all categories while the search field is empty).
+    const visibleCategories = categories.filter(category => matchesSearch(category.name, searchText));
+    const listCategories = visibleCategories.map((category) => (
         <CategoryCard
             key={category.id}
             categoryId={category.id}
@@ -76,5 +81,18 @@ export default function CategoryList() {
             categoryOwned={countIdsInCategory(ownedIds, category.id)}
         />
     ));
-    return <div className="category-list">{listCategories}</div>;
+    return (
+        <>
+            <SearchBox
+                value={searchText}
+                onChange={setSearchText}
+                placeholder='Search categories'
+            />
+            {visibleCategories.length === 0 ? (
+                <p className='status-message'>No categories match your search.</p>) : (
+                <div className="category-list">{listCategories}</div>
+            )}
+        </>
+    )
+
 }

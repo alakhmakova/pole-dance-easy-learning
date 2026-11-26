@@ -43,11 +43,25 @@ a.el-name:hover {
 }
 
 .level {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/* Three leaves in a row before the level word: filled ones up to the level, outlines after it. */
+.leaves {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.leaves img {
+    width: 16px;
+    height: 32px;
 }
 
 .status {
